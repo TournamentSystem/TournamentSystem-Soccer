@@ -1,0 +1,24 @@
+{
+	"name": "neo-hornberger/tournament_system-soccer",
+	"type": "project",
+	"authors": [
+		{
+			"name": "Neo Hornberger",
+			"email": "neo.hornberger@gmx.de"
+		}
+	],
+	"require": {
+		"neo-hornberger/tournament_system-core": "dev-master"
+	},
+	"autoload": {
+		"classmap": [
+			"src/"
+		]
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "../TournamentSystem-Core/"
+		}
+	]
+}
