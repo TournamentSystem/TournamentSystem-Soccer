@@ -3,45 +3,24 @@
 namespace TournamentSystem\Model;
 
 use DateTime;
+use TournamentSystem\Database\Column;
 
 class Tournament {
-	private int $id;
-	private string $name;
-	private string $description;
-	private DateTime $start;
-	private DateTime $end;
-	private string $owner;
+	public readonly int $id;
+	#[Column(size: '64')]
+	public readonly string $name;
+	#[Column(size: '256')]
+	public readonly string $description;
+	public readonly DateTime $start;
+	public readonly DateTime $end;
+	public readonly User $owner;
 	
-	public function __construct(int $id, string $name, ?string $description, DateTime $start, DateTime $end, string $owner) {
+	public function __construct(int $id, string $name, ?string $description, DateTime $start, DateTime $end, User $owner) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->description = $description ?? '';
 		$this->start = $start;
 		$this->end = $end;
 		$this->owner = $owner;
-	}
-	
-	public function getId(): int {
-		return $this->id;
-	}
-	
-	public function getName(): string {
-		return $this->name;
-	}
-	
-	public function getDescription(): string {
-		return $this->description;
-	}
-	
-	public function getStart(): DateTime {
-		return $this->start;
-	}
-	
-	public function getEnd(): DateTime {
-		return $this->end;
-	}
-	
-	public function getOwner(): string {
-		return $this->owner;
 	}
 }
