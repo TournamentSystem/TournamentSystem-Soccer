@@ -19,14 +19,14 @@ class TournamentListController extends Controller {
 			$tournaments = [];
 			
 			foreach($result->fetch_all(MYSQLI_ASSOC) as $tournament) {
-				array_push($tournaments, new Tournament(
+				$tournaments[] = new Tournament(
 					$tournament['id'],
 					$tournament['name'],
 					$tournament['description'],
 					new DateTime($tournament['start']),
 					new DateTime($tournament['end']),
 					$tournament['owner']
-				));
+				);
 			}
 			
 			parent::render(new TournamentListView($tournaments, $_REQUEST['year'] ?? null));
