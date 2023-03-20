@@ -1,7 +1,8 @@
 <?php
 
-namespace TournamentSystem\Controller;
+namespace TournamentSystem\Controller\Soccer;
 
+use TournamentSystem\Controller\Controller;
 use TournamentSystem\Model\Club;
 use TournamentSystem\View\ClubView;
 
@@ -12,10 +13,10 @@ class ClubController extends Controller {
 	}
 	
 	protected function get(): int {
-		$this->stmt->bind_param('i', $_REQUEST['id']);
-		$this->stmt->execute();
+		$this->stmt[0]->bind_param('i', $_REQUEST['id']);
+		$this->stmt[0]->execute();
 		
-		if($result = $this->stmt->get_result()) {
+		if($result = $this->stmt[0]->get_result()) {
 			if($club = $result->fetch_assoc()) {
 				$club = new Club(
 					$club['id'],

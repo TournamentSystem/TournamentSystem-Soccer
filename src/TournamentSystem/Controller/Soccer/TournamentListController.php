@@ -1,8 +1,9 @@
 <?php
 
-namespace TournamentSystem\Controller;
+namespace TournamentSystem\Controller\Soccer;
 
 use DateTime;
+use TournamentSystem\Controller\Controller;
 use TournamentSystem\Model\Tournament;
 use TournamentSystem\View\TournamentListView;
 
@@ -13,9 +14,9 @@ class TournamentListController extends Controller {
 	}
 	
 	protected function get(): int {
-		$this->stmt->execute();
+		$this->stmt[0]->execute();
 		
-		if($result = $this->stmt->get_result()) {
+		if($result = $this->stmt[0]->get_result()) {
 			$tournaments = [];
 			
 			foreach($result->fetch_all(MYSQLI_ASSOC) as $tournament) {

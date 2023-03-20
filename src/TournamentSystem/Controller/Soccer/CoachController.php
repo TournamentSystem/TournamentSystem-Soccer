@@ -1,8 +1,9 @@
 <?php
 
-namespace TournamentSystem\Controller;
+namespace TournamentSystem\Controller\Soccer;
 
 use DateTime;
+use TournamentSystem\Controller\Controller;
 use TournamentSystem\Model\Coach;
 use TournamentSystem\View\CoachView;
 
@@ -13,10 +14,10 @@ class CoachController extends Controller {
 	}
 	
 	protected function get(): int {
-		$this->stmt->bind_param('i', $_REQUEST['id']);
-		$this->stmt->execute();
+		$this->stmt[0]->bind_param('i', $_REQUEST['id']);
+		$this->stmt[0]->execute();
 		
-		if($result = $this->stmt->get_result()) {
+		if($result = $this->stmt[0]->get_result()) {
 			if($coach = $result->fetch_assoc()) {
 				$coach = new Coach(
 					$coach['id'],
