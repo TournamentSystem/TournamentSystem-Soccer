@@ -7,6 +7,15 @@
 			"email": "neo.hornberger@gmx.de"
 		}
 	],
+	"extra": {
+		"tournament_system": {
+			"type": "module",
+			"class": "TournamentSystem\\Module\\Soccer",
+			"files": [
+				"templates"
+			]
+		}
+	},
 	"require": {
 		"neo-hornberger/tournament_system-core": "dev-master"
 	},
