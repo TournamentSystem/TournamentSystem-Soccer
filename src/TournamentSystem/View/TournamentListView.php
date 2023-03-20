@@ -20,21 +20,21 @@ class TournamentListView extends View {
 		
 		uasort($tournaments, fn($a, $b) => $a->getStart() <=> $b->getStart());
 		foreach($tournaments as $tournament) {
-			$sy = $tournament->getStart()->format('Y');
-			$ey = $tournament->getEnd()->format('Y');
+			$start_year = $tournament->start->format('Y');
+			$end_year = $tournament->end->format('Y');
 			
-			if(!array_key_exists($sy, $this->tournaments)) {
-				$this->tournaments[$sy] = [];
+			if(!array_key_exists($start_year, $this->tournaments)) {
+				$this->tournaments[$start_year] = [];
 			}
 			
-			array_push($this->tournaments[$sy], $tournament);
+			$this->tournaments[$start_year][] = $tournament;
 			
-			if($ey != $sy) {
-				if(!array_key_exists($ey, $this->tournaments)) {
-					$this->tournaments[$ey] = [];
+			if($end_year != $start_year) {
+				if(!array_key_exists($end_year, $this->tournaments)) {
+					$this->tournaments[$end_year] = [];
 				}
 				
-				array_push($this->tournaments[$ey], $tournament);
+				$this->tournaments[$end_year][] = $tournament;
 			}
 		}
 		krsort($this->tournaments);
@@ -43,9 +43,9 @@ class TournamentListView extends View {
 	}
 	
 	public function render(): void {
-		parent::renderView(parent::template('tournament_list.latte', [
+		parent::renderView('templates/tournament_list.latte', [
 			'tournaments' => $this->tournaments,
 			'year' => $this->year
-		]));
+		]);
 	}
 }
