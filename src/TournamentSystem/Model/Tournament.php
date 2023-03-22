@@ -14,7 +14,7 @@ class Tournament {
 	public readonly DateTime $start;
 	public readonly DateTime $end;
 	public readonly User $owner;
-	
+
 	public function __construct(int $id, string $name, ?string $description, DateTime $start, DateTime $end, User $owner) {
 		$this->id = $id;
 		$this->name = $name;
